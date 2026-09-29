@@ -21,6 +21,7 @@ class TestCreateUser:
         user_from_db = User.get_user_by_username(db_session, create_user_request.username)
 
         assert user_from_db.username == create_user_request.username, "Созданного пользователя нет в БД"
+        assert user_from_db.role == create_user_request.role, "Роль в БД не совпадает с запрошенной"
 
     @pytest.mark.parametrize(
         "username, password",

@@ -15,7 +15,7 @@ class RequestSpecs:
     def auth_headers(username: str, password: str, role: str = "ADMIN"):
         user_data = LoginUserRequest(username=username, password=password, role=role)
         response = requests.post(
-            url="http://localhost:4111/api/auth/token/login",
+            url=f"{Config.fetch('backendUrl')}/auth/token/login",
             json=user_data.model_dump(),
             headers=RequestSpecs.base_headers()
         )
